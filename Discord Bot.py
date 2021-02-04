@@ -19,13 +19,10 @@ class CustomClient(discord.Client):
     async def on_ready(self):
         print(f'{self.user} has connected to Discord!')
 
-client = CustomClient()
 
-client = discord.Client()
-
-intents = discord.Intents.default()
-intents.members = True
-client = discord.Client(intents=intents)
+intents = discord.Intents(messages = True, guilds = True, reactions = True, members = True, presences = True)
+client = commands.Client(command_prefix='.', intents = intents)
+#should prob work, might need one of the lines from original
 
 @client.event
 async def on_ready():
